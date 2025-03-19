@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 
-namespace GiftCardSystem.Infrastructure.Persistence
+namespace Infrastructure.Persistence
 {
     public class GiftCardDbContext : DbContext
     {

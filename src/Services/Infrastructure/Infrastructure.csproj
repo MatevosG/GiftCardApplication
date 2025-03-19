@@ -7,11 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\src\Services\GiftCard.Domain\GiftCard.Domain.csproj" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.3" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\" />
+    <ProjectReference Include="..\GiftCard.Application\GiftCard.Application.csproj" />
+    <ProjectReference Include="..\GiftCard.Domain\GiftCard.Domain.csproj" />
   </ItemGroup>
 
 </Project>

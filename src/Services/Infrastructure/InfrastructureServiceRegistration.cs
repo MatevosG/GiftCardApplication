@@ -1,11 +1,11 @@
-﻿using GiftCardSystem.Infrastructure.Repositories;
-using GiftCardSystem.Application.Contracts;
-using GiftCardSystem.Infrastructure.Persistence;
+﻿using GiftCardSystem.Application.Contracts;
+using Infrastructure.Persistence;
+using Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace GiftCardSystem.Infrastructure
+namespace Infrastructure
 {
     public static class InfrastructureServiceRegistration
     {
@@ -13,7 +13,7 @@ namespace GiftCardSystem.Infrastructure
         {
             services.AddDbContext<GiftCardDbContext>(options =>
                 options.UseSqlServer(configuration.GetConnectionString("GiftCardConnection")));
-           
+
 
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             services.AddScoped<IClientRepository, ClientRepository>();

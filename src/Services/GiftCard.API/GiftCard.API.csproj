@@ -19,8 +19,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\GiftCard.Application\GiftCard.Application.csproj" />
-    <ProjectReference Include="..\GiftCard.Infrastructure\GiftCard.Infrastructure.csproj" />
+
+    <ProjectReference Include="..\GiftCard.Application\GiftCard.Application.csproj" />
+    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

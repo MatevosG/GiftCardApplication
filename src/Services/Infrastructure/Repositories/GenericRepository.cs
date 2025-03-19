@@ -1,6 +1,6 @@
 ﻿using GiftCardSystem.Application.Contracts;
 using GiftCardSystem.Domain.Entities.Base;
-using GiftCardSystem.Infrastructure.Persistence;
+using Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -9,8 +9,8 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GiftCardSystem.Infrastructure.Repositories
-{ 
+namespace Infrastructure.Repositories
+{
     public class GenericRepository<T> : IGenericRepository<T> where T : EntityBase
     {
         protected readonly DbContext _context;
@@ -46,12 +46,12 @@ namespace GiftCardSystem.Infrastructure.Repositories
 
         public async Task<T> GetByIdAsync(int id)
         {
-           return await _dbSet.FirstOrDefaultAsync(x=>x.Id == id);
+            return await _dbSet.FirstOrDefaultAsync(x => x.Id == id);
         }
 
         public IQueryable<T> GetQuery()
         {
-           return _dbSet.AsQueryable();
+            return _dbSet.AsQueryable();
         }
 
         public IQueryable<T> GetQuery(Expression<Func<T, bool>> predicate)
@@ -73,7 +73,7 @@ namespace GiftCardSystem.Infrastructure.Repositories
             return query;
         }
 
-  
+
 
         public async Task UpdateAsync(T entity)
         {

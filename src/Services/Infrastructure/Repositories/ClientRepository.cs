@@ -1,13 +1,8 @@
 ﻿using GiftCardSystem.Application.Contracts;
 using GiftCardSystem.Domain.Entities;
-using GiftCardSystem.Infrastructure.Persistence;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Infrastructure.Persistence;
 
-namespace GiftCardSystem.Infrastructure.Repositories
+namespace Infrastructure.Repositories
 {
     public class ClientRepository : GenericRepository<Client>, IClientRepository
     {
