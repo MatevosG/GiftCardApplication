@@ -9,9 +9,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{2D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GiftCard.API", "src\Services\GiftCard.API\GiftCard.API.csproj", "{D0CDC5BE-3224-49DC-9108-9FAD239CC302}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GiftCard.Domain", "src\Services\GiftCard.Domain\GiftCard.Domain.csproj", "{EACA7029-BE1B-4D55-8CD9-98A696F15CDD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GiftCardSystem.Domain", "src\Services\GiftCardSystem.Domain\GiftCardSystem.Domain.csproj", "{EACA7029-BE1B-4D55-8CD9-98A696F15CDD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GiftCard.Application", "src\Services\GiftCard.Application\GiftCard.Application.csproj", "{7707B788-23FD-4E63-ABE6-AA8B4B0434FA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GiftCardSystem.Application", "src\Services\GiftCardSystem.Application\GiftCardSystem.Application.csproj", "{7707B788-23FD-4E63-ABE6-AA8B4B0434FA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "src\Services\Infrastructure\Infrastructure.csproj", "{A7D0E71A-65FC-4777-9D26-B1FFE11F956D}"
 EndProject

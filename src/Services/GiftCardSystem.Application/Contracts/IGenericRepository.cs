@@ -1,4 +1,5 @@
-﻿using GiftCardSystem.Domain.Entities.Base;
+﻿
+using GiftCardSystem.Domain.Entities.Base;
 using System.Linq.Expressions;
 
 namespace GiftCardSystem.Application.Contracts
