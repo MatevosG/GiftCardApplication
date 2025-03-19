@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using GiftCardSystem.Application.Authorization;
+using GiftCardSystem.Application.Security;
+using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 
 namespace GiftCard.Application
@@ -10,13 +12,15 @@ namespace GiftCard.Application
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
             //services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
            
-           // services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly()));
+            services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly()));
+
             //services.AddTransient(typeof(IPipelineBehavior<,>), typeof(UnhandledExceptionBehaviour<,>));
             //services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehaviour<,>));
             //services.AddTransient(typeof(IPipelineBehavior<,>), typeof(PerformanceBehaviour<,>));
             //services.;
             //services.AddScoped(s => s.GetService<IHttpContextAccessor>().HttpContext.User);
-            //services.AddScoped<IEncrypter, Encrypter>();
+            services.AddScoped<IEncrypter, Encrypter>();
+            services.AddScoped<IAuthentication, Authentication>();
             //services.AddScoped<IAwsActions, AwsActions>();
 
 

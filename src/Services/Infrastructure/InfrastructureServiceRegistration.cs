@@ -20,6 +20,7 @@ namespace Infrastructure
             services.AddScoped<IAddressRepository, AddressRepository>();
             services.AddScoped<IGiftCardRepository, GiftCardRepository>();
             services.AddScoped<IGiftCardPurchaseRepository, GiftCardPurchaseRepository>();
+            services.AddScoped<IGiftCardTransactionRepository, GiftCardTransactionRepository>();
 
             return services;
         }

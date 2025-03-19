@@ -26,6 +26,8 @@ namespace GiftCardSystem.Domain.Entities.EntityConfigurations
             builder.Property(m => m.FirstName).IsRequired(true).HasMaxLength(50);
             builder.Property(m => m.LastName).IsRequired(true).HasMaxLength(100);
             builder.Property(m => m.PhoneNumber).IsRequired(false).HasMaxLength(70);
+            builder.Property(m => m.Salt).HasMaxLength(200).IsUnicode(true).IsRequired(true);
+            builder.Property(m => m.Password).IsRequired(true).HasMaxLength(200);
         }
     }
 }

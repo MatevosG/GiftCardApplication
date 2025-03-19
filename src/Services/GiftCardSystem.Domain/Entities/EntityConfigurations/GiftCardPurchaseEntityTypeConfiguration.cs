@@ -17,6 +17,10 @@ namespace GiftCardSystem.Domain.Entities.EntityConfigurations
                    .WithMany(x => x.GiftCardPurchases)
                    .HasForeignKey(m => m.GiftCardId);
 
+            builder.HasMany(m => m.GiftCardTransactions)
+                   .WithOne(m => m.GiftCardPurchase)
+                   .HasForeignKey(m => m.GiftCardPurchaseId);
+
             builder.Property(m => m.CreatedAt).IsRequired(true);
             builder.Property(m => m.UpdatedAt).IsRequired(true);
             builder.Property(m => m.Balance).HasPrecision(18, 12).IsRequired(true);
