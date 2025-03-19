@@ -1,0 +1,54 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35825.156 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{2DF37B11-0291-4102-AEEC-92D6EA28ABF5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GiftCard.API", "src\Services\GiftCard.API\GiftCard.API.csproj", "{D0CDC5BE-3224-49DC-9108-9FAD239CC302}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GiftCard.Domain", "src\Services\GiftCard.Domain\GiftCard.Domain.csproj", "{EACA7029-BE1B-4D55-8CD9-98A696F15CDD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GiftCard.Infrastructure", "src\Services\GiftCard.Infrastructure\GiftCard.Infrastructure.csproj", "{9F3B138E-657D-4FEA-A537-928F9BFDE033}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GiftCard.Application", "GiftCard.Application\GiftCard.Application.csproj", "{7707B788-23FD-4E63-ABE6-AA8B4B0434FA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D0CDC5BE-3224-49DC-9108-9FAD239CC302}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0CDC5BE-3224-49DC-9108-9FAD239CC302}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0CDC5BE-3224-49DC-9108-9FAD239CC302}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0CDC5BE-3224-49DC-9108-9FAD239CC302}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EACA7029-BE1B-4D55-8CD9-98A696F15CDD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EACA7029-BE1B-4D55-8CD9-98A696F15CDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EACA7029-BE1B-4D55-8CD9-98A696F15CDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EACA7029-BE1B-4D55-8CD9-98A696F15CDD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F3B138E-657D-4FEA-A537-928F9BFDE033}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F3B138E-657D-4FEA-A537-928F9BFDE033}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F3B138E-657D-4FEA-A537-928F9BFDE033}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F3B138E-657D-4FEA-A537-928F9BFDE033}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7707B788-23FD-4E63-ABE6-AA8B4B0434FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7707B788-23FD-4E63-ABE6-AA8B4B0434FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7707B788-23FD-4E63-ABE6-AA8B4B0434FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7707B788-23FD-4E63-ABE6-AA8B4B0434FA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2DF37B11-0291-4102-AEEC-92D6EA28ABF5} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{D0CDC5BE-3224-49DC-9108-9FAD239CC302} = {2DF37B11-0291-4102-AEEC-92D6EA28ABF5}
+		{EACA7029-BE1B-4D55-8CD9-98A696F15CDD} = {2DF37B11-0291-4102-AEEC-92D6EA28ABF5}
+		{9F3B138E-657D-4FEA-A537-928F9BFDE033} = {2DF37B11-0291-4102-AEEC-92D6EA28ABF5}
+		{7707B788-23FD-4E63-ABE6-AA8B4B0434FA} = {2DF37B11-0291-4102-AEEC-92D6EA28ABF5}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7E5B4ADD-66C7-4644-B163-7C07E47337CA}
+	EndGlobalSection
+EndGlobal
