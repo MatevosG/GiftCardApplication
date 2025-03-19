@@ -21,7 +21,6 @@ namespace Infrastructure
             services.AddScoped<IGiftCardRepository, GiftCardRepository>();
             services.AddScoped<IGiftCardPurchaseRepository, GiftCardPurchaseRepository>();
 
-
             return services;
         }
     }
