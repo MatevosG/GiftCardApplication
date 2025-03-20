@@ -1,6 +1,6 @@
 ﻿namespace GiftCardSystem.Application.Dtoes
 {
-    class GiftCardDto : BaseDto
+    public class GiftCardDto : BaseDto
     {
         public string Name { get; set; }
         public string Description { get; set; }

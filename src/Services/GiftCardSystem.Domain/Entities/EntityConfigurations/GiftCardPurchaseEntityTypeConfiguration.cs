@@ -23,8 +23,10 @@ namespace GiftCardSystem.Domain.Entities.EntityConfigurations
 
             builder.Property(m => m.CreatedAt).IsRequired(true);
             builder.Property(m => m.UpdatedAt).IsRequired(true);
+            builder.Property(m => m.ExpirationDate).IsRequired(true);
+            builder.Property(m => m.AddressId).IsRequired(true);
             builder.Property(m => m.Balance).HasPrecision(18, 12).IsRequired(true);
-            builder.Property(m=>m.IsRedeemed).HasAnnotation("DefaultValue", false).IsRequired(true);
+            builder.Property(m=>m.IsRedeemed).HasDefaultValue(0).IsRequired(true);
         }
     }
 }

@@ -14,7 +14,8 @@ namespace GiftCardSystem.Application.Mappings
         public ClientProfile()
         {
             CreateMap<Client,ClientDto>().ReverseMap()
-                .ForMember(x => x.GiftCardPurchases, y => y.MapFrom(c => c.GiftCardPurchases));
+                .ForMember(x => x.GiftCardPurchases, y => y.MapFrom(c => c.GiftCardPurchases))
+                .ForMember(x=>x.Addresses,y=>y.MapFrom(c=>c.Addresses.Where(x=>!x.IsDeleted)));
             CreateMap<Client, RegisterClientDto>().ReverseMap();
         }
     }

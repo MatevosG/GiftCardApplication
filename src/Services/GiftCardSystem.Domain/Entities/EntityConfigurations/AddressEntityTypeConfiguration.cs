@@ -20,6 +20,7 @@ namespace GiftCardSystem.Domain.Entities.EntityConfigurations
             builder.Property(m => m.Country).IsRequired(true).HasMaxLength(100);
             builder.Property(m => m.PostalCode).IsRequired(false).HasMaxLength(20);
             builder.Property(m => m.Street).IsRequired(true).HasMaxLength(100);
+            builder.Property(m => m.IsDeleted).HasDefaultValue(0).IsRequired(true);
         }
     }
 }

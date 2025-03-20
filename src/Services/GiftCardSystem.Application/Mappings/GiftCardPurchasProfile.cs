@@ -9,7 +9,9 @@ namespace GiftCardSystem.Application.Mappings
         public GiftCardPurchasProfile()
         {
             CreateMap<GiftCardPurchase, GiftCardPurchaseDto>().ReverseMap()
-                .ForMember(x => x.GiftCardTransactions, y => y.MapFrom(c => c.GiftCardTransactions));
+                .ForMember(x => x.GiftCardTransactions, y => y.MapFrom(c => c.GiftCardTransactions.OrderByDescending(o=>o.CreatedAt)))
+                .ForMember(x => x.GiftCard.Name, y => y.MapFrom(c => c.GiftCardName));
+            CreateMap<GiftCardPurchase,BuyGiftCardDto>().ReverseMap();
         }
     }
 }

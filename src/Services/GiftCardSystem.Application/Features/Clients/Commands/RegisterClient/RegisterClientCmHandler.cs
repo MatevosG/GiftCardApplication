@@ -34,9 +34,14 @@ namespace GiftCardSystem.Application.Features.Clients.Commands.RegisterClient
             if(!request.ClientDto.Password.Equals(request.ClientDto.ConfirmPassword))
                 throw new CustomException("Passwords do not match");
 
-            Regex emailRegex = new Regex(ConstantsItems.EmailRegex);
-            if (!emailRegex.IsMatch(request.ClientDto.Email))
+            Regex Regex = new Regex(ConstantsItems.EmailRegex);
+            if (!Regex.IsMatch(request.ClientDto.Email))
                 throw new CustomException("Invalid email format");
+
+            Regex = new Regex(ConstantsItems.PhoneNumberRegex);
+
+            if (!Regex.IsMatch(request.ClientDto.PhoneNumber.Replace(" ", "")))
+                throw new CustomException("Invalid phonenumber format");
 
             var client = await _clientRepository.GetQuery(x => x.Email == request.ClientDto.Email).FirstOrDefaultAsync();
             if (client != null)

@@ -38,25 +38,6 @@ namespace Infrastructure.Persistence
                 });
 
                 await context.SaveChangesAsync();
-
-                //var user = context.Set<User>().Add(new User
-                //{
-                //    UserName = "test3",
-                //    LanguageId = "en",
-                //    PhoneNumber = string.Empty,
-                //    CurrencyId = "USD",
-                //    PartnerId = partner.Entity.Id,
-                //    Email = "Test@mail.com",
-                //    Password = "3cHGnZO6AHNvVaRyLJ5PTrYDtDq0+NLythweYiHqe2EwgnYRsJo0HpOH0QScSUJzGZI=",
-                //    Salt = "5i6momst0faNXxTnUMrdYfN16A9uBUJQDLT1XUms8XdRflGIGqTVaJ+WxfwFnszsgtw=",
-                //    CreatedBy = 1,
-                //    LastModifiedBy = 1,
-                //    CreatedDate = DateTime.UtcNow,
-                //    LastModifiedDate = DateTime.UtcNow,
-                //    IsDeleted = false,
-                //});
-
-
             }
         }
     }

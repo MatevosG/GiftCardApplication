@@ -2,12 +2,7 @@
 using GiftCardSystem.Domain.Entities.Base;
 using Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Infrastructure.Repositories
 {
@@ -36,7 +31,12 @@ namespace Infrastructure.Repositories
         public async Task DeleteAsync(T entity)
         {
             _dbSet.Remove(entity);
-            await SaveChangesAsync();
+            await _context.SaveChangesAsync();
+        }
+        public async Task DeleteRangeAsync(List<T> entities)
+        {
+            _dbSet.RemoveRange(entities);
+            await _context.SaveChangesAsync();
         }
 
         public async Task<T> GetByIdAsNoTrackingAsync(int id)
@@ -88,8 +88,7 @@ namespace Infrastructure.Repositories
         }
         public async Task<int> SaveChangesAsync()
         {
-            var context = _context as DbContext;
-            var added = context.ChangeTracker.Entries()
+            var added = _context.ChangeTracker.Entries()
                         .Where(t => t.State == EntityState.Added)
                         .Select(t => t.Entity)
                         .ToArray();
@@ -105,7 +104,7 @@ namespace Infrastructure.Repositories
                 }
             }
 
-            var modified = context.ChangeTracker.Entries()
+            var modified = _context.ChangeTracker.Entries()
                         .Where(t => t.State == EntityState.Modified)
                         .Select(t => t.Entity)
                         .ToArray();
@@ -119,7 +118,7 @@ namespace Infrastructure.Repositories
                 }
             }
 
-            return await context.SaveChangesAsync();
+            return await _context.SaveChangesAsync();
         }
     }
 }

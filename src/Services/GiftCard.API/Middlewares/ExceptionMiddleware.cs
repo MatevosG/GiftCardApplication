@@ -28,20 +28,20 @@ namespace GiftCard.API.Middlewares
               //  _logger.LogInformation("CustomException is : {CustomException}", JsonConvert.SerializeObject(ex));
                 context.Response.StatusCode = (int)HttpStatusCode.BadRequest;
                 context.Response.ContentType = "application/json";
-                await context.Response.WriteAsync(JsonConvert.SerializeObject(new ResponseModel { Response = ex.Message, IsSuccess = false }));
+                await context.Response.WriteAsync(JsonConvert.SerializeObject(new ResponseModel { Error = ex.Message, IsSuccess = false }));
             }
             catch (UnauthorizedAccessException ex)
             {
                 context.Response.StatusCode = (int)HttpStatusCode.Unauthorized;
                 context.Response.ContentType = "application/json";
-                await context.Response.WriteAsync(JsonConvert.SerializeObject(new ResponseModel { Response = "Unauthorized",IsSuccess = false }));
+                await context.Response.WriteAsync(JsonConvert.SerializeObject(new ResponseModel { Error = "Unauthorized",IsSuccess = false }));
             }
             catch (System.Exception ex)
             {
                // _logger.LogError("GeneralException is : {GeneralException} request context is : {RequestContext}", JsonConvert.SerializeObject(ex), JsonConvert.SerializeObject(context));
                 context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
                 context.Response.ContentType = "application/json";
-                await context.Response.WriteAsync(JsonConvert.SerializeObject(new ResponseModel { Response = "An unexpected error occurred.", IsSuccess = false }));
+                await context.Response.WriteAsync(JsonConvert.SerializeObject(new ResponseModel { Error = "An unexpected error occurred.", IsSuccess = false }));
             }
         }
     }

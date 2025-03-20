@@ -1,10 +1,11 @@
+using GiftCard.API.Controllers;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GiftCardSystem.API.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class WeatherForecastController : ControllerBase
+public class WeatherForecastController : BaseController
 {
     private static readonly string[] Summaries = new[]
     {
@@ -21,6 +22,7 @@ public class WeatherForecastController : ControllerBase
     [HttpGet(Name = "GetWeatherForecast")]
     public IEnumerable<WeatherForecast> Get()
     {
+        //var fff = UserId;
         return Enumerable.Range(1, 5).Select(index => new WeatherForecast
         {
             Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),

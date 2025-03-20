@@ -19,5 +19,6 @@ namespace GiftCardSystem.Application.Contracts
         Task UpdateAsync(T entity);
         Task UpdateRangeAsync(List<T> entities);
         Task DeleteAsync(T entity);
+        Task DeleteRangeAsync(List<T> entities);
     }
 }
