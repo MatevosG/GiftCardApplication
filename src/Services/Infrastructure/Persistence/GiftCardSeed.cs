@@ -22,7 +22,7 @@ namespace Infrastructure.Persistence
                     LastName = "Testyan",
                     PhoneNumber = "+374 454545",
                     UpdatedAt = DateTime.UtcNow,
-                    Password = "3cHGnZO6AHNvVaRyLJ5PTrYDtDq0+NLythweYiHqe2EwgnYRsJo0HpOH0QScSUJzGZI=",
+                    Password = "3cHGnZO6AHNvVaRyLJ5PTrYDtDq0+NLythweYiHqe2EwgnYRsJo0HpOH0QScSUJzGZI=", //test
                     Salt = "5i6momst0faNXxTnUMrdYfN16A9uBUJQDLT1XUms8XdRflGIGqTVaJ+WxfwFnszsgtw=",
                 });
 
