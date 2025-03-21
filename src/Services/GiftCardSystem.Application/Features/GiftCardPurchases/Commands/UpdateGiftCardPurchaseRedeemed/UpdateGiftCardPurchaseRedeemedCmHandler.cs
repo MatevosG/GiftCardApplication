@@ -17,15 +17,13 @@ namespace GiftCardSystem.Application.Features.GiftCardPurchases.Commands.UpdateG
 
         public async Task<ResponseModel> Handle(UpdateGiftCardPurchaseRedeemedCm request, CancellationToken cancellationToken)
         {
-            var giftCardPurchase = await _giftCardPurchaseRepository.GetByIdAsNoTrackingAsync(request.Model.Id.Value);
+            var giftCardPurchase = await _giftCardPurchaseRepository.GetByIdAsNoTrackingAsync(request.Id);
             if (giftCardPurchase == null)
-                throw new CustomException(nameof(GiftCardPurchase), request.Model.Id);
-          
-            if (giftCardPurchase.IsRedeemed != request.Model.IsRedeemed.Value && !giftCardPurchase.IsRedeemed)
-            {
-                giftCardPurchase.IsRedeemed = request.Model.IsRedeemed.Value;
-                await _giftCardPurchaseRepository.UpdateAsync(giftCardPurchase);
-            }
+                throw new CustomException(nameof(GiftCardPurchase), request.Id);
+
+            giftCardPurchase.IsRedeemed = true;
+            await _giftCardPurchaseRepository.UpdateAsync(giftCardPurchase);
+
             return new ResponseModel("GiftCardPurchase Redeemed updated successfully");
         }
     }

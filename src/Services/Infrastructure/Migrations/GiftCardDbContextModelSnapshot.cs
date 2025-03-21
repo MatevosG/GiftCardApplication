@@ -181,6 +181,9 @@ namespace Infrastructure.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
+                    b.Property<DateTime>("ExpirationDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<int>("GiftCardId")
                         .HasColumnType("int");
 
@@ -193,6 +196,8 @@ namespace Infrastructure.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("AddressId");
 
                     b.HasIndex("ClientId");
 
@@ -245,10 +250,16 @@ namespace Infrastructure.Migrations
 
             modelBuilder.Entity("GiftCardSystem.Domain.Entities.GiftCardPurchase", b =>
                 {
+                    b.HasOne("GiftCardSystem.Domain.Entities.Address", "Address")
+                        .WithMany("GiftCardPurchases")
+                        .HasForeignKey("AddressId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
                     b.HasOne("GiftCardSystem.Domain.Entities.Client", "Client")
                         .WithMany("GiftCardPurchases")
                         .HasForeignKey("ClientId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("GiftCardSystem.Domain.Entities.GiftCard", "GiftCard")
@@ -256,6 +267,8 @@ namespace Infrastructure.Migrations
                         .HasForeignKey("GiftCardId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Address");
 
                     b.Navigation("Client");
 
@@ -271,6 +284,11 @@ namespace Infrastructure.Migrations
                         .IsRequired();
 
                     b.Navigation("GiftCardPurchase");
+                });
+
+            modelBuilder.Entity("GiftCardSystem.Domain.Entities.Address", b =>
+                {
+                    b.Navigation("GiftCardPurchases");
                 });
 
             modelBuilder.Entity("GiftCardSystem.Domain.Entities.Client", b =>

@@ -25,6 +25,8 @@ namespace GiftCardSystem.Application.Features.GiftCardPurchases.Queries.GetGiftC
             var giftCardPurchase = await _giftCardPurchaseRepository.GetQuery()
                                                               .Include(x=>x.GiftCardTransactions)
                                                               .Include(x => x.GiftCard)
+                                                              .Include(x => x.Client)
+                                                              .Include(x => x.Address)
                                                               .FirstOrDefaultAsync(x => x.Id == request.Id);
             if (giftCardPurchase == null)
                 throw new CustomException(nameof(GiftCardPurchase), request.Id);

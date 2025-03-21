@@ -6,11 +6,11 @@ namespace GiftCardSystem.Application.Features.GiftCardPurchases.Commands.UpdateG
 {
     public class UpdateGiftCardPurchaseRedeemedCm : IRequest<ResponseModel>
     {
-        public GiftCardPurchaseDto Model { get; set; }
+        public int Id { get; set; }
 
-        public UpdateGiftCardPurchaseRedeemedCm(GiftCardPurchaseDto model)
+        public UpdateGiftCardPurchaseRedeemedCm(int id)
         {
-            Model = model;
+            Id = id;
         }
     }
 }

@@ -10,6 +10,7 @@ namespace GiftCardSystem.Domain.Entities
         public virtual Client Client { get; set; }
         public int GiftCardId { get; set; }
         public int AddressId { get; set; }
+        public Address Address { get; set; }
         public DateTime ExpirationDate { get; set; }
         public virtual GiftCard GiftCard { get; set; }
         public virtual ICollection<GiftCardTransaction> GiftCardTransactions { get; set; }

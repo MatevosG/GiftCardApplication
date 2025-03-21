@@ -11,5 +11,6 @@ namespace GiftCardSystem.Domain.Entities
         public bool IsDeleted { get; set; }
         public int ClientId { get; set; }
         public virtual Client Client { get; set; }
+        public virtual ICollection<GiftCardPurchase> GiftCardPurchases { get; set; }
     }
 }

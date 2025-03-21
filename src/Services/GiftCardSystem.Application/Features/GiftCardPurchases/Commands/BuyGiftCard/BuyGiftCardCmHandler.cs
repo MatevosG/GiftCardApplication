@@ -30,7 +30,7 @@ namespace GiftCardSystem.Application.Features.GiftCardPurchases.Commands.BuyGift
 
         public async Task<ResponseModel> Handle(BuyGiftCardCm request, CancellationToken cancellationToken)
         {
-            var giftCardPurchase = _mapper.Map<GiftCardPurchase>(request.Model);
+            var giftCardPurchase = new GiftCardPurchase();
             var address = await _addressRepository.GetQuery(x=> x.Id == request.Model.AddressId && !x.IsDeleted)
                                                   .FirstOrDefaultAsync();
             if (address == null)
@@ -40,10 +40,12 @@ namespace GiftCardSystem.Application.Features.GiftCardPurchases.Commands.BuyGift
             if (giftCard == null)
                 throw new CustomException(nameof(Domain.Entities.GiftCard), request.Model.GiftCardId);
 
-            if(Math.Round(request.Model.Amount,1) < Math.Round(giftCard.Amount,1))
+            if(Math.Round(request.Model.Amount,2) < Math.Round(giftCard.Amount,2))
                 throw new CustomException("Amount should be greater than or equal to gift card amount");
 
-
+            giftCardPurchase.ClientId = request.Model.ClientId;
+            giftCardPurchase.GiftCardId = request.Model.GiftCardId;
+            giftCardPurchase.AddressId = request.Model.AddressId;
             giftCardPurchase.Balance = giftCard.Amount;
             giftCardPurchase.ExpirationDate = DateTime.UtcNow.AddMonths(giftCard.ExpirationMonthPeriod);
             giftCardPurchase = await _giftCardPurchaseRepository.AddAsync(giftCardPurchase);

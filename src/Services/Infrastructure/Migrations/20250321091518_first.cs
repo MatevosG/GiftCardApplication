@@ -87,6 +87,7 @@ namespace Infrastructure.Migrations
                     ClientId = table.Column<int>(type: "int", nullable: false),
                     GiftCardId = table.Column<int>(type: "int", nullable: false),
                     AddressId = table.Column<int>(type: "int", nullable: false),
+                    ExpirationDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
@@ -94,11 +95,15 @@ namespace Infrastructure.Migrations
                 {
                     table.PrimaryKey("PK_GiftCardPurchase", x => x.Id);
                     table.ForeignKey(
+                        name: "FK_GiftCardPurchase_Address_AddressId",
+                        column: x => x.AddressId,
+                        principalTable: "Address",
+                        principalColumn: "Id");
+                    table.ForeignKey(
                         name: "FK_GiftCardPurchase_Client_ClientId",
                         column: x => x.ClientId,
                         principalTable: "Client",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_GiftCardPurchase_GiftCard_GiftCardId",
                         column: x => x.GiftCardId,
@@ -136,6 +141,11 @@ namespace Infrastructure.Migrations
                 column: "ClientId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_GiftCardPurchase_AddressId",
+                table: "GiftCardPurchase",
+                column: "AddressId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_GiftCardPurchase_ClientId",
                 table: "GiftCardPurchase",
                 column: "ClientId");
@@ -155,19 +165,19 @@ namespace Infrastructure.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Address");
-
-            migrationBuilder.DropTable(
                 name: "GiftCardTransaction");
 
             migrationBuilder.DropTable(
                 name: "GiftCardPurchase");
 
             migrationBuilder.DropTable(
-                name: "Client");
+                name: "Address");
 
             migrationBuilder.DropTable(
                 name: "GiftCard");
+
+            migrationBuilder.DropTable(
+                name: "Client");
         }
     }
 }

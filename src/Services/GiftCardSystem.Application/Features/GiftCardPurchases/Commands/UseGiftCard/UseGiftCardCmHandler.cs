@@ -34,13 +34,12 @@ namespace GiftCardSystem.Application.Features.GiftCardPurchases.Commands.UseGift
                 var transaction = await _giftCardTransactionRepository.GetByIdAsNoTrackingAsync(request.Model.RefundTransactionId.Value);
                 if(transaction == null)
                     throw new CustomException(nameof(GiftCardTransaction), request.Model.RefundTransactionId.Value);
-              
-                await _giftCardTransactionRepository.AddAsync(new GiftCardTransaction
-                {
-                    Amount = transaction.Amount,
-                    GiftCardPurchaseId = giftCardPurchase.Id,
-                    Type = (int)GiftCardTransactionTypes.Refund,
-                });
+
+                if(transaction.Type == (int)GiftCardTransactionTypes.Refund)
+                    throw new CustomException("Transaction has already been refunded");
+                transaction.Type = (int)GiftCardTransactionTypes.Refund;
+                await _giftCardTransactionRepository.UpdateAsync(transaction);
+               
                 giftCardPurchase.Balance += transaction.Amount;
                 if(giftCardPurchase.IsRedeemed)
                     giftCardPurchase.IsRedeemed =false;
@@ -49,6 +48,8 @@ namespace GiftCardSystem.Application.Features.GiftCardPurchases.Commands.UseGift
                 return new ResponseModel { Response = "Gift Card Refunded Successfully" };
             }
 
+            if(giftCardPurchase.IsRedeemed)
+                throw new CustomException("Gift Card has already been redeemed");
 
             if (giftCardPurchase.Balance == 0m)
                 throw new CustomException("Gift Card has no balance");

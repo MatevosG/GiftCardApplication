@@ -14,6 +14,11 @@ namespace GiftCardSystem.Domain.Entities.EntityConfigurations
                    .WithMany(x => x.Addresses)
                    .HasForeignKey(m => m.ClientId);
 
+            builder.HasMany(m => m.GiftCardPurchases)
+                   .WithOne(x => x.Address)
+                   .HasForeignKey(m => m.AddressId)
+                   .OnDelete(DeleteBehavior.NoAction);
+
             builder.Property(m => m.CreatedAt).IsRequired(true);
             builder.Property(m => m.UpdatedAt).IsRequired(true);
             builder.Property(m => m.City).IsRequired(true).HasMaxLength(100);

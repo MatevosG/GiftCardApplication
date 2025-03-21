@@ -15,7 +15,8 @@ namespace GiftCardSystem.Domain.Entities.EntityConfigurations
 
             builder.HasMany(m => m.GiftCardPurchases)
                    .WithOne(m => m.Client)
-                   .HasForeignKey(m => m.ClientId);
+                   .HasForeignKey(m => m.ClientId)
+                   .OnDelete(DeleteBehavior.NoAction);
 
             builder.Property(m => m.Id).ValueGeneratedOnAdd().IsRequired();
 

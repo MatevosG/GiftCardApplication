@@ -25,20 +25,21 @@ namespace GiftCard.API.Middlewares
             }
             catch (CustomException ex)
             {
-              //  _logger.LogInformation("CustomException is : {CustomException}", JsonConvert.SerializeObject(ex));
+                _logger.LogWarning("CustomException occurred: {Message}", ex.Message);
                 context.Response.StatusCode = (int)HttpStatusCode.BadRequest;
                 context.Response.ContentType = "application/json";
                 await context.Response.WriteAsync(JsonConvert.SerializeObject(new ResponseModel { Error = ex.Message, IsSuccess = false }));
             }
             catch (UnauthorizedAccessException ex)
             {
+                _logger.LogWarning("UnauthorizedAccessException: Unauthorized access attempt detected.");
                 context.Response.StatusCode = (int)HttpStatusCode.Unauthorized;
                 context.Response.ContentType = "application/json";
                 await context.Response.WriteAsync(JsonConvert.SerializeObject(new ResponseModel { Error = "Unauthorized",IsSuccess = false }));
             }
             catch (System.Exception ex)
             {
-               // _logger.LogError("GeneralException is : {GeneralException} request context is : {RequestContext}", JsonConvert.SerializeObject(ex), JsonConvert.SerializeObject(context));
+                _logger.LogError(ex, "Unhandled Exception occurred: {Message}", ex.Message);
                 context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
                 context.Response.ContentType = "application/json";
                 await context.Response.WriteAsync(JsonConvert.SerializeObject(new ResponseModel { Error = "An unexpected error occurred.", IsSuccess = false }));

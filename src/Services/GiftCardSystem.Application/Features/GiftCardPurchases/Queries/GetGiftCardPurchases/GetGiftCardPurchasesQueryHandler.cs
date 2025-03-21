@@ -22,6 +22,7 @@ namespace GiftCardSystem.Application.Features.GiftCardPurchases.Queries.GetGiftC
         {
             var giftCardPurchases = await  _giftCardPurchaseRepository.GetQuery()
                                                                       .Include(x => x.GiftCard)
+                                                                      .Include(x=>x.Client)
                                                                       .OrderByDescending(x => x.Id)
                                                                       .Skip(request.Request.SkipCount * request.Request.TakeCount)
                                                                       .Take(request.Request.TakeCount)
