@@ -54,7 +54,7 @@ jobs:
         run: |
           dotnet nuget push out/*.nupkg \
             --source "github" \
+            --api-key "${{ secrets.NUGET_TOKEN }}" \
             --skip-duplicate \
             --force-english-output
-
 
