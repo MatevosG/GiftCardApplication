@@ -26,6 +26,8 @@ namespace Infrastructure.Persistence
                     Salt = "5i6momst0faNXxTnUMrdYfN16A9uBUJQDLT1XUms8XdRflGIGqTVaJ+WxfwFnszsgtw=",
                 });
 
+                
+
                 var giftCard = context.Set<GiftCardSystem.Domain.Entities.GiftCard>().Add(new GiftCardSystem.Domain.Entities.GiftCard
                 {
                     Name = "Test Gift Card",
