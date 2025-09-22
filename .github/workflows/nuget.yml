@@ -1,0 +1,49 @@
+name: Publish Infrastructure NuGet
+
+on:
+  push:
+    paths:
+      - 'src/Services/Infrastructure/**'
+      - '.github/workflows/publish-infrastructure.yml'
+  # Կամ՝ tag-երից publish անելու համար
+  # tags:
+  #   - 'infra-v*'
+
+permissions:
+  contents: read
+  packages: write   # ԱՆՊԱՅՄԱՆ՝ GitHub Packages push-ի համար
+
+jobs:
+  pack-and-publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      # Ցանկության դեպքում՝ հաշվենք version-ը run_number-ով
+      - name: Compute version
+        id: v
+        run: |
+          echo "VERSION=1.0.${GITHUB_RUN_NUMBER}" >> $GITHUB_OUTPUT
+
+      - name: Restore
+        run: dotnet restore
+
+      - name: Pack Infrastructure
+        run: >
+          dotnet pack src/Services/Infrastructure/Infrastructure.csproj
+          -c Release
+          -o out
+          /p:PackageVersion=${{ steps.v.outputs.VERSION }}
+
+      - name: Publish to GitHub Packages
+        run: >
+          dotnet nuget push out/*.nupkg
+          --api-key ${{ secrets.GITHUB_TOKEN }}
+          --source https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json
