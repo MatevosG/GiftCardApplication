@@ -27,9 +27,6 @@ namespace Infrastructure.Persistence
                 });
 
 
-
-                
-
                 var giftCard = context.Set<GiftCardSystem.Domain.Entities.GiftCard>().Add(new GiftCardSystem.Domain.Entities.GiftCard
                 {
                     Name = "Test Gift Card",
