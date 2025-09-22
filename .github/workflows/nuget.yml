@@ -43,24 +43,18 @@ jobs:
           /p:PackageVersion=${{ steps.v.outputs.VERSION }}
       - name: Configure NuGet source (GitHub Packages)
         run: |
-          # մաքրի արդեն եղած "github" source-ը, եթե կա
           dotnet nuget remove source github || true
-
-          # ավելացնի github source՝ user/token-ով
           dotnet nuget add source "https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json" \
-           --name github \
-           --username "${{ github.actor }}" \
-           --password "${{ secrets.NUGET_TOKEN }}" \
-           --store-password-in-clear-text
+            --name github \
+            --username "${{ github.repository_owner }}" \
+            --password "${{ secrets.NUGET_TOKEN }}" \
+            --store-password-in-clear-text
 
       - name: Publish to GitHub Packages
         run: |
-         # Կարող ես նաև պահել api-key-ը config-ի մեջ (կամ ուղղակի տալ push-ին)
-          dotnet nuget setApiKey "${{ secrets.GITHUB_TOKEN }}" --source "github" || true
-
           dotnet nuget push out/*.nupkg \
             --source "github" \
-            --api-key "${{ secrets.NUGET_TOKEN }}" \
-            --skip-duplicate
+            --skip-duplicate \
+            --force-english-output
 
 
