@@ -18,6 +18,13 @@
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+    <IsPackable>true</IsPackable>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+
+    <!-- Ցանկալի, որ assembly-ն փաթեթի անունին համապատասխանի -->
+    <AssemblyName>GiftCard.Infrastructure</AssemblyName>
+    <PackageId>GiftCard.Infrastructure</PackageId>
+    <Description>Infrastructure layer for GiftCardApplication</Description>
   </PropertyGroup>
 
   <ItemGroup>
