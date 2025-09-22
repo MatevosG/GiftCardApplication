@@ -41,6 +41,23 @@ jobs:
           -o out
           --no-build
           /p:PackageVersion=${{ steps.v.outputs.VERSION }}
+      - name: Configure NuGet for GitHub Packages
+        run: |
+          mkdir -p ~/.nuget/NuGet
+           cat > ~/.nuget/NuGet/NuGet.Config <<'EOF'
+             <?xml version="1.0" encoding="utf-8"?>
+               <configuration>
+                 <packageSources>
+                  <add key="github" value="https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json" />
+                  </packageSources>
+                 <packageSourceCredentials>
+                 <github>
+                 <add key="Username" value="${{ github.actor }}" />
+                 <add key="ClearTextPassword" value="${{ secrets.NUGET_TOKEN }}" />
+                 </github>
+                 </packageSourceCredentials>
+                </configuration>
+              EOF
 
       - name: Publish to GitHub Packages
         env:
