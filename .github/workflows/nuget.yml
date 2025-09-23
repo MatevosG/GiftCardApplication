@@ -41,15 +41,16 @@ jobs:
           -o out
           --no-build
           /p:PackageVersion=${{ steps.v.outputs.VERSION }}
-      - name: Configure NuGet source (GitHub Packages)
+      - name: Configure NuGet source (GitHub)
         run: |
           dotnet nuget remove source github || true
           dotnet nuget add source "https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json" \
             --name github \
-            --username "${{ github.actor }}" \
+            --username "${{ github.repository_owner }}" \
             --password "${{ secrets.NUGET_TOKEN }}" \
             --store-password-in-clear-text
           dotnet nuget list source
 
       - name: Publish to GitHub Packages
-        run: dotnet nuget push "out/*.nupkg" --source "github" --skip-duplicate --force-english-output
+        run: dotnet nuget push "out/*.nupkg" --source "github" --skip-duplicate
+
