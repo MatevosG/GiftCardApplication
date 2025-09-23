@@ -46,9 +46,10 @@ jobs:
           dotnet nuget remove source github || true
           dotnet nuget add source "https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json" \
             --name github \
-            --username "${{ github.repository_owner }}" \
+            --username "${{ github.actor }}" \
             --password "${{ secrets.NUGET_TOKEN }}" \
             --store-password-in-clear-text
+          dotnet nuget list source
 
       - name: Publish to GitHub Packages
-        run: dotnet nuget push "out/*.nupkg" --source "github" --api-key "${{ secrets.NUGET_TOKEN }}" --skip-duplicate --force-english-output
+        run: dotnet nuget push "out/*.nupkg" --source "github" --skip-duplicate --force-english-output
